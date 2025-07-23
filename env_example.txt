@@ -1,0 +1,225 @@
+# FinancialCompanion Production - Пример конфигурации
+# Скопируйте этот файл в .env и измените значения для вашего окружения
+
+# =============================================================================
+# БЕЗОПАСНОСТЬ
+# =============================================================================
+
+# Секретный ключ для JWT токенов (ОБЯЗАТЕЛЬНО ИЗМЕНИТЬ В ПРОДАКШЕНЕ!)
+SECURITY_SECRET_KEY=your-super-secret-key-change-this-in-production-123456789
+
+# Ключ шифрования для чувствительных данных (ОБЯЗАТЕЛЬНО ИЗМЕНИТЬ В ПРОДАКШЕНЕ!)
+SECURITY_ENCRYPTION_KEY=your-encryption-key-change-this-in-production-123456789
+
+# Время жизни JWT токена в минутах
+SECURITY_ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# Максимальное количество попыток входа
+SECURITY_MAX_LOGIN_ATTEMPTS=5
+
+# Время блокировки аккаунта в минутах
+SECURITY_LOCKOUT_DURATION_MINUTES=15
+
+# Минимальная длина пароля
+SECURITY_MIN_PASSWORD_LENGTH=8
+
+# Требовать специальные символы в пароле
+SECURITY_REQUIRE_SPECIAL_CHARS=true
+
+# Размер истории паролей
+SECURITY_PASSWORD_HISTORY_SIZE=5
+
+# =============================================================================
+# БАЗА ДАННЫХ
+# =============================================================================
+
+# URL базы данных
+DB_DATABASE_URL=sqlite:///./financial_companion_production.db
+
+# Размер пула соединений
+DB_DATABASE_POOL_SIZE=10
+
+# Максимальное количество соединений
+DB_DATABASE_MAX_OVERFLOW=20
+
+# URL Redis для кэширования
+DB_REDIS_URL=redis://localhost:6379
+
+# Пароль Redis (если требуется)
+DB_REDIS_PASSWORD=
+
+# Номер базы данных Redis
+DB_REDIS_DB=0
+
+# Включить резервное копирование
+DB_BACKUP_ENABLED=true
+
+# Интервал резервного копирования в часах
+DB_BACKUP_INTERVAL_HOURS=24
+
+# Время хранения резервных копий в днях
+DB_BACKUP_RETENTION_DAYS=30
+
+# Путь для резервных копий
+DB_BACKUP_PATH=./backups
+
+# =============================================================================
+# ЛОГИРОВАНИЕ
+# =============================================================================
+
+# Уровень логирования (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+LOG_LOG_LEVEL=INFO
+
+# Формат логов
+LOG_LOG_FORMAT=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+
+# Файл основного лога
+LOG_LOG_FILE=./logs/financial_companion.log
+
+# Максимальный размер лог-файла в МБ
+LOG_LOG_MAX_SIZE_MB=100
+
+# Количество резервных лог-файлов
+LOG_LOG_BACKUP_COUNT=5
+
+# Включить структурированное логирование
+LOG_STRUCTURED_LOGGING=true
+
+# Использовать JSON формат для логов
+LOG_JSON_LOGS=true
+
+# Включить аудит
+LOG_AUDIT_LOG_ENABLED=true
+
+# Файл аудита
+LOG_AUDIT_LOG_FILE=./logs/audit.log
+
+# =============================================================================
+# МОНИТОРИНГ
+# =============================================================================
+
+# Включить метрики Prometheus
+MONITORING_METRICS_ENABLED=true
+
+# Порт для метрик Prometheus
+MONITORING_METRICS_PORT=9090
+
+# DSN для Sentry (для отслеживания ошибок)
+MONITORING_SENTRY_DSN=
+
+# Окружение для Sentry
+MONITORING_SENTRY_ENVIRONMENT=production
+
+# Включить алерты
+MONITORING_ALERTS_ENABLED=true
+
+# Email для алертов
+MONITORING_ALERT_EMAIL=admin@company.com
+
+# Webhook для алертов
+MONITORING_ALERT_WEBHOOK=
+
+# Интервал проверки здоровья системы в секундах
+MONITORING_HEALTH_CHECK_INTERVAL_SECONDS=30
+
+# =============================================================================
+# ПРОИЗВОДИТЕЛЬНОСТЬ
+# =============================================================================
+
+# Включить кэширование
+PERF_CACHE_ENABLED=true
+
+# Время жизни кэша в секундах
+PERF_CACHE_TTL_SECONDS=3600
+
+# Максимальный размер кэша
+PERF_CACHE_MAX_SIZE=1000
+
+# Включить асинхронную обработку
+PERF_ASYNC_PROCESSING=true
+
+# Максимальное количество одновременных задач
+PERF_MAX_CONCURRENT_TASKS=10
+
+# Максимальное количество транзакций в запросе
+PERF_MAX_TRANSACTIONS_PER_REQUEST=100
+
+# Максимальный размер файла в МБ
+PERF_MAX_FILE_SIZE_MB=10
+
+# Таймаут запроса в секундах
+PERF_REQUEST_TIMEOUT_SECONDS=30
+
+# =============================================================================
+# СООТВЕТСТВИЕ СТАНДАРТАМ
+# =============================================================================
+
+# Включить соответствие PCI DSS
+COMPLIANCE_PCI_COMPLIANCE_ENABLED=true
+
+# Маскировать чувствительные данные
+COMPLIANCE_MASK_SENSITIVE_DATA=true
+
+# Аудит всех транзакций
+COMPLIANCE_AUDIT_ALL_TRANSACTIONS=true
+
+# Время хранения аудита в годах
+COMPLIANCE_AUDIT_RETENTION_YEARS=7
+
+# Строгая валидация
+COMPLIANCE_STRICT_VALIDATION=true
+
+# Проверка санкционных списков
+COMPLIANCE_SANCTIONS_CHECK_ENABLED=true
+
+# Включить регуляторную отчетность
+COMPLIANCE_REGULATORY_REPORTS_ENABLED=true
+
+# Интервал генерации отчетов в часах
+COMPLIANCE_REPORT_GENERATION_INTERVAL_HOURS=24
+
+# =============================================================================
+# ДОПОЛНИТЕЛЬНЫЕ НАСТРОЙКИ
+# =============================================================================
+
+# Название приложения
+APP_NAME=FinancialCompanion Production
+
+# Версия приложения
+APP_VERSION=2.0.0
+
+# Режим отладки (false для продакшена)
+DEBUG=false
+
+# Окружение
+ENVIRONMENT=production
+
+# Хост для запуска
+HOST=0.0.0.0
+
+# Порт для запуска
+PORT=8501
+
+# =============================================================================
+# ПРИМЕРЫ НАСТРОЕК ДЛЯ РАЗНЫХ ОКРУЖЕНИЙ
+# =============================================================================
+
+# Для разработки:
+# DEBUG=true
+# ENVIRONMENT=development
+# LOG_LOG_LEVEL=DEBUG
+# MONITORING_METRICS_ENABLED=false
+# COMPLIANCE_PCI_COMPLIANCE_ENABLED=false
+
+# Для тестирования:
+# ENVIRONMENT=testing
+# LOG_LOG_LEVEL=INFO
+# MONITORING_SENTRY_DSN=
+# COMPLIANCE_AUDIT_RETENTION_YEARS=1
+
+# Для продакшена:
+# DEBUG=false
+# ENVIRONMENT=production
+# LOG_LOG_LEVEL=WARNING
+# MONITORING_SENTRY_DSN=https://your-sentry-dsn
+# COMPLIANCE_PCI_COMPLIANCE_ENABLED=true 
